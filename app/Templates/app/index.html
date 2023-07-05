@@ -1,0 +1,31 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'app/CSS/index.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="main">
+    <h1>VividVisions: Explore the World of Captivating Images 📸📷</h1>
+    <div class="image-cards row row-cols-1 row-cols-md-3 g-4">
+        {% for data in data_set %}
+        <div class="col">
+            <div class="card h-100">
+                <img src="{{ data.image.url }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{ data.title }}</h5>
+                    <p class="card-text">{{ data.description|slice:":100" }}...</p>
+                    <a href="{{ data.image.url }}" class="btn btn-primary" download>Download</a>
+                </div>
+
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+{% endblock %}
